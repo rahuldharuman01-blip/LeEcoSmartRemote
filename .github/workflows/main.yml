@@ -28,11 +28,24 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
         with:
-          packages: "platform-tools platforms;android-37 build-tools;36.0.0"
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: "8.14.3"
+          packages: "platform-tools build-tools;36.0.0"
+
+      - name: Install Android API 37 platform
+        shell: bash
+        run: |
+          set +e
+          for name in "platforms;android-37" "platforms;android-37.0"; do
+            for ch in 0 1 2 3; do
+              echo "Trying $name on channel $ch"
+              if sdkmanager --channel=$ch "$name"; then
+                echo "Installed $name"
+                exit 0
+              fi
+            done
+          done
+          echo "::error::Could not install Android API 37"
+          sdkmanager --list --channel=3 | grep -i "android-37" || true
+          exit 1
 
       - name: Check project files
         shell: bash
