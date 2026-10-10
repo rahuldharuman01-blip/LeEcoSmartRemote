@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-android { namespace = "com.rahul.leecoremote"; compileSdk = 36
+android { namespace = "com.rahul.leecoremote"; compileSdk = 37
     defaultConfig { applicationId = "com.rahul.leecoremote"; minSdk = 23; targetSdk = 36; versionCode = 2; versionName = "2.0-liquid-glass" }
 }
 
