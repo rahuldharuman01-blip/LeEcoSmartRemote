@@ -140,8 +140,7 @@ class MainActivity : ComponentActivity() {
         addRow(neuButton("−\nVolume") { key("KEYCODE_VOLUME_DOWN") }, neuButton("+\nVolume") { key("KEYCODE_VOLUME_UP") }, neuButton("−\nChannel") { key("KEYCODE_CHANNEL_DOWN") }, neuButton("+\nChannel") { key("KEYCODE_CHANNEL_UP") })
 
         content.addView(label("MEDIA"))
-        addRow(neuButton("Previous") { key("KEYCODE_MEDIA_PREVIOUS") }, neuButton("▶  Play / Pause", {}, true).also { it.setOnClickListener { key("KEYCODE_MEDIA_PLAY_PAUSE") } }, neuButton("Next") { key("KEYCODE_MEDIA_NEXT") })
-        addRow(neuButton("Stop") { key("KEYCODE_MEDIA_STOP") }, neuButton("Sleep") { key("KEYCODE_SLEEP") }, neuButton("Search") { key("KEYCODE_SEARCH") })
+        addRow(neuButton("Previous") { key("KEYCODE_MEDIA_PREVIOUS") }, neuButton("▶  Play / Pause", true) {}.also { it.setOnClickListener { key("KEYCODE_MEDIA_PLAY_PAUSE") } }, neuButton("Next") { key("KEYCODE_MEDIA_NEXT") })        addRow(neuButton("Stop") { key("KEYCODE_MEDIA_STOP") }, neuButton("Sleep") { key("KEYCODE_SLEEP") }, neuButton("Search") { key("KEYCODE_SEARCH") })
 
         content.addView(label("NUMBER PAD"))
         listOf("1","2","3","4","5","6","7","8","9","0").chunked(3).forEach { nums ->
