@@ -80,3 +80,14 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
+      - name: Build debug APK
+        shell: bash
+        run: |
+          set +e
+          gradle --no-daemon --console=plain assembleDebug > build.log 2>&1
+          code=$?
+          echo "===== COMPILE ERRORS ====="
+          grep -E "^e: |What went wrong" -A3 build.log | head -80
+          echo "===== LAST 30 LINES ====="
+          tail -n 30 build.log
+          exit $code
