@@ -3,8 +3,28 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
-android { namespace = "com.rahul.leecoremote"; compileSdk = 37
-    defaultConfig { applicationId = "com.rahul.leecoremote"; minSdk = 23; targetSdk = 36; versionCode = 2; versionName = "2.0-liquid-glass" }
+android {
+    namespace = "com.rahul.leecoremote"
+    compileSdk = 37
+
+    defaultConfig {
+        applicationId = "com.rahul.leecoremote"
+        minSdk = 23
+        targetSdk = 36
+        versionCode = 2
+        versionName = "2.0-liquid-glass"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    }
 }
 
 dependencies {
