@@ -75,7 +75,7 @@ class MainActivity : ComponentActivity() {
         setPadding(dp(4), dp(18), dp(4), dp(9))
     }
 
-    private fun neuButton(text: String, action: () -> Unit, large: Boolean = false): Button = Button(this).apply {
+    private fun neuButton(text: String, large: Boolean = false, action: () -> Unit): Button = Button(this).apply {
         this.text = text
         setTextColor(Color.rgb(21,42,58))
         textSize = if (large) 16f else 12f
@@ -95,7 +95,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun hero(text: String, action: () -> Unit) {
-        val b = neuButton(text, action, true)
+        val b = neuButton(text, true, action)
         b.layoutParams = LinearLayout.LayoutParams(-1, dp(58)).apply { setMargins(0, dp(6), 0, dp(6)) }
         content.addView(b)
     }
@@ -132,8 +132,7 @@ class MainActivity : ComponentActivity() {
         addRow(neuButton("⏻\nPower") { key("KEYCODE_POWER") }, neuButton("◉\nMute") { key("KEYCODE_MUTE") }, neuButton("⌂\nHome") { key("KEYCODE_HOME") })
 
         content.addView(label("NAVIGATION"))
-        addRow(neuButton("↑") { key("KEYCODE_DPAD_UP") }, neuButton("OK", {}, true).also { it.setOnClickListener { key("KEYCODE_DPAD_CENTER") } }, neuButton("Info") { key("KEYCODE_INFO") })
-        addRow(neuButton("←") { key("KEYCODE_DPAD_LEFT") }, neuButton("Back") { key("KEYCODE_BACK") }, neuButton("→") { key("KEYCODE_DPAD_RIGHT") })
+        addRow(neuButton("↑") { key("KEYCODE_DPAD_UP") }, neuButton("OK", true) {}.also { it.setOnClickListener { key("KEYCODE_DPAD_CENTER") } }, neuButton("Info") { key("KEYCODE_INFO") })        addRow(neuButton("←") { key("KEYCODE_DPAD_LEFT") }, neuButton("Back") { key("KEYCODE_BACK") }, neuButton("→") { key("KEYCODE_DPAD_RIGHT") })
         addRow(neuButton("Menu") { key("KEYCODE_MENU") }, neuButton("↓") { key("KEYCODE_DPAD_DOWN") }, neuButton("Guide") { key("KEYCODE_GUIDE") })
 
         content.addView(label("VOLUME & CHANNEL"))
@@ -177,8 +176,7 @@ class MainActivity : ComponentActivity() {
             }
         }
         content.addView(pad, LinearLayout.LayoutParams(-1, dp(380)).apply { setMargins(0,dp(6),0,dp(10)) })
-        addRow(neuButton("Back") { key("KEYCODE_BACK") }, neuButton("Home") { key("KEYCODE_HOME") }, neuButton("OK", {}, true).also { it.setOnClickListener { key("KEYCODE_DPAD_CENTER") } })
-        content.addView(label("TEXT INPUT"))
+        addRow(neuButton("Back") { key("KEYCODE_BACK") }, neuButton("Home") { key("KEYCODE_HOME") }, neuButton("OK", true) {}.also { it.setOnClickListener { key("KEYCODE_DPAD_CENTER") } })        content.addView(label("TEXT INPUT"))
         hero("⌨  Send Text / Keyboard") { keyboardDialog() }
         hero("🎙  Voice to TV") { startVoice() }
     }
