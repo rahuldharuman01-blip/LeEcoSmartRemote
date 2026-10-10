@@ -1,0 +1,13 @@
+<resources>
+    <style name="Theme.LeEcoRemote" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#EAF7FC</item>
+        <item name="android:navigationBarColor">#D9EDF7</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">#087FA6</item>
+        <item name="colorSecondary">#0C9EB8</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>
